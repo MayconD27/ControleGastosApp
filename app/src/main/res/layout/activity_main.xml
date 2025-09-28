@@ -51,7 +51,7 @@
             android:text="+"
             android:textSize="25sp"
             android:textAlignment="center"
-            android:backgroundTint="#333"
+            android:backgroundTint="#FF9800"
         />
     </LinearLayout>>
     <androidx.recyclerview.widget.RecyclerView

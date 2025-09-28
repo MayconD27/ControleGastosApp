@@ -1,6 +1,7 @@
 package com.example.controledegastos.views
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //Meu resete de banco de dados para caso encontrar uma falha
+        //db.resetDatabase()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         data = db.selectAllItems()
@@ -37,12 +40,37 @@ class MainActivity : AppCompatActivity() {
 
         //colocando o total dos valores
         val valorTotal = db.sumItemsValue()
+        if(valorTotal<0){
+            binding.totalValue.setTextColor(Color.RED)
+        }
+        else{
+            binding.totalValue.setTextColor(Color.parseColor("#333333"))
+        }
         binding.totalValue.setText("${conversorMoeda(valorTotal)}")
         binding.addItem.setOnClickListener {
             val i = Intent(this, MainActivity2::class.java)
             startActivity(i)
         }
     }
+    override fun onResume() {
+        super.onResume()
+
+        // Recarrega a lista do banco de dados direto aqui
+        val data = db.selectAllItems()
+        adapter = ControleCustoAdapter(data)
+        binding.recyclerView.adapter = adapter
+
+        // Atualiza o valor total
+        val valorTotal = db.sumItemsValue()
+        if(valorTotal<0){
+            binding.totalValue.setTextColor(Color.RED)
+        }
+        else{
+            binding.totalValue.setTextColor(Color.parseColor("#333333"))
+        }
+        binding.totalValue.text = conversorMoeda(valorTotal)
+    }
+
     fun conversorMoeda( valor: Float) : String{
         val valorFormatado = "R$ %.2f".format(valor).replace('.', ',')
         return valorFormatado

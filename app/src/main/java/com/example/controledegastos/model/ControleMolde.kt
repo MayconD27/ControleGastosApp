@@ -1,5 +1,6 @@
 package com.example.controledegastos.model
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -64,6 +65,25 @@ class ControleMolde(context: Context): SQLiteOpenHelper(context, "database.db", 
         }
         return total
     }
+    fun insertItem(valor:Float, categoria:String, data:String) :Long{
+        val db = this.writableDatabase
+        val contentValue  = ContentValues()
+        contentValue.put("valor", valor)
+        contentValue.put("categoria", categoria)
+        contentValue.put("data", data)
+
+        //escrevendo o insert
+        val res = db.insert("control", null, contentValue)
+        return  res
+
+    }
+    fun resetDatabase() {
+        val db = this.writableDatabase
+        db.execSQL("DROP TABLE IF EXISTS control")
+        onCreate(db)
+    }
+
+
 
 
 }

@@ -7,37 +7,160 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity2"
     android:orientation="vertical"
+    android:gravity=""
 >
-    <Button
+    <ImageButton
         android:id="@+id/isBack"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        app:cornerRadius="10dp"
+        android:layout_width="48dp"
+        android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
-        android:backgroundTint="#333"
-        android:text="voltar"
+        android:background="@drawable/border_radius"
+        android:src="@drawable/arrow_back"
         android:textColor="#eee"
         android:textSize="15dp"
-    />
+        android:scaleType="centerInside"
+        android:paddingStart="10dp"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="Adicionar no item"
+        android:text="Adicionar item"
         android:textAlignment="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="45dp"
         android:textColor="#333"
         android:textStyle="bold"
     />
-    <Spinner
-        android:id="@+id/spinnerCategoria"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="10dp"
-
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="50dp"
+        android:textSize="15sp"
+        android:textColor="#999"
+        android:layout_marginBottom="30dp"
+        android:text="Preencha os campos abaixo para adicionar um novo item à sua lista."
     />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="18sp"
+            android:textColor="#999"
+            android:layout_marginBottom="5dp"
+        />
+        <EditText
+            android:id="@+id/inputValor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:hint="Ex:100.00"
+            android:background="@drawable/input_style"
+            android:padding="10dp"
+
+        />
+    </LinearLayout>>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoria"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="18sp"
+            android:textColor="#999"
+            android:layout_marginBottom="5dp"
+            />
+        <Spinner
+            android:id="@+id/spinnerCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/input_style"
+            android:padding="10dp"
+            android:layout_marginHorizontal="30dp"
+            app:cornerRadius="30dp"
+            android:textColor="#fff"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data"
+            android:layout_marginHorizontal="30dp"
+            android:textSize="18sp"
+            android:textColor="#999"
+            android:layout_marginBottom="5dp"
+            />
+        <EditText
+            android:id="@+id/dataInput"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/input_style"
+            android:padding="10dp"
+            android:textColor="#333"
+            android:hint="Selecione a data"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+    >
+
+        <Button
+            android:id="@+id/btnEntrada"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="Entrada"
+            android:textColor="#fff"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#02A209"
+            app:cornerRadius="10dp"
+        />
 
 
+        <Button
+            android:id="@+id/btnSaida"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="Saída"
+            android:textColor="#fff"
+            app:cornerRadius="10dp"
+            android:backgroundTint="#B30F01" /> <!-- vermelho -->
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="30dp"
+        android:text="Selecione se o item vai ser uma entrada ou saída"
+    />
 </LinearLayout>
