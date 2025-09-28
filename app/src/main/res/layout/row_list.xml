@@ -16,13 +16,14 @@
     />
     <TextView
         android:id="@+id/valorItem"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
+        android:textAlignment="textStart"
         android:layout_height="wrap_content"
         android:text="- R$100,00"
         android:textSize="20sp"
         android:textColor="#333"
         android:textStyle="bold"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="30dp"
     />
 
     <TextView
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Ali."
         android:textSize="20sp"
-        android:layout_marginRight="75dp"
+        android:layout_marginRight="65dp"
         android:textColor="#bbbb"
         android:textStyle="bold"
     />

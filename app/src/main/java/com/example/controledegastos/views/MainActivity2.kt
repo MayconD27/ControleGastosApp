@@ -1,0 +1,36 @@
+package com.example.controledegastos.views
+
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.example.controledegastos.R
+import com.example.controledegastos.databinding.ActivityMain2Binding
+
+class MainActivity2 : AppCompatActivity() {
+    private lateinit var binding: ActivityMain2Binding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        binding = ActivityMain2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val categorias = listOf("Alimentação", "Transporte", "Educação", "Lazer", "Outros")
+        // Cria o adapter de categorias
+        val spinnerAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            categorias
+        )
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Atribui o adapter usando o binding
+        binding.spinnerCategoria.adapter = spinnerAdapter
+
+        //Botâo de voltar
+        binding.isBack.setOnClickListener {
+            finish()
+        }
+    }
+}
