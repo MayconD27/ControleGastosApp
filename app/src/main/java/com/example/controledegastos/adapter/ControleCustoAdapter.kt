@@ -42,7 +42,7 @@ class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.A
     if (list.valor < 0) {
         holder.valorItem.setTextColor(Color.RED) // Importa android.graphics.Color
     } else {
-        holder.valorItem.setTextColor(Color.BLACK) // Ou a cor padrão que quiser
+        holder.valorItem.setTextColor(Color.parseColor("#333333")) // Ou a cor padrão que quiser
     }
     }
 
