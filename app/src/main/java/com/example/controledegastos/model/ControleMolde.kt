@@ -47,6 +47,30 @@ class ControleMolde(context: Context): SQLiteOpenHelper(context, "database.db", 
         }
         return controlList
     }
+    fun sellectById(id: Int) : ArrayList<ItemCusto>{
+        val db = this.readableDatabase
+        val c = db.rawQuery("SELECT * FROM control WHERE id=?", arrayOf(id.toString()))
+        var controlList : ArrayList<ItemCusto> = ArrayList()
+        if (c.moveToFirst()) {
+            do {
+                val idIndex = c.getColumnIndex("id")
+                val valorIndex = c.getColumnIndex("id")
+                val categoriaIndex = c.getColumnIndex("categoria")
+                val dateIndex = c.getColumnIndex("data")
+
+                val id = c.getInt(idIndex)
+                val valor = c.getFloat(valorIndex)
+                val categoria = c.getString(categoriaIndex)
+                val data = c.getString(dateIndex)
+
+                controlList.add(ItemCusto(id,valor,categoria,data))
+                // ... pega as outras colunas
+            } while (c.moveToNext())
+        }
+        c.close()
+        return controlList
+    }
+
 
     fun sumItemsValue() : Float{
         val db = this.readableDatabase

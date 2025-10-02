@@ -18,6 +18,9 @@ class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.A
         val categoria : TextView = itemView.findViewById(R.id.categoriaItem)
         val dataItem : TextView = itemView.findViewById(R.id.dataItem)
         val image : ImageView = itemView.findViewById(R.id.imageCategoria)
+        fun bind(item: ItemCusto) {
+
+        }
     }
 
     override fun onCreateViewHolder(

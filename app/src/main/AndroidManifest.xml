@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ControleDeGastos">
         <activity
+            android:name=".views.MainActivity3"
+            android:exported="false" />
+        <activity
             android:name=".views.MainActivity2"
             android:exported="false" />
         <activity

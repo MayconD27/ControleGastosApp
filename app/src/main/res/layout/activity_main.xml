@@ -52,6 +52,7 @@
             android:textSize="25sp"
             android:textAlignment="center"
             android:backgroundTint="#FF9800"
+            app:cornerRadius="1000dp"
         />
     </LinearLayout>>
     <androidx.recyclerview.widget.RecyclerView
