@@ -1,5 +1,6 @@
 package com.example.controledegastos.adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.media.Image
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.controledegastos.R
 import com.example.controledegastos.data.ItemCusto
 import com.example.controledegastos.model.ControleMolde
+import com.example.controledegastos.views.MainActivity3
 
 class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.Adapter<ControleCustoAdapter.ControleViewHolder>(){
     class ControleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -18,9 +20,6 @@ class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.A
         val categoria : TextView = itemView.findViewById(R.id.categoriaItem)
         val dataItem : TextView = itemView.findViewById(R.id.dataItem)
         val image : ImageView = itemView.findViewById(R.id.imageCategoria)
-        fun bind(item: ItemCusto) {
-
-        }
     }
 
     override fun onCreateViewHolder(
@@ -41,7 +40,12 @@ class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.A
      holder.categoria.setText("${converterCat(list.categoria)}")
      holder.dataItem.setText("${formatDate(list.data)}")
     holder.image.setImageResource(img(list.categoria))
-
+    holder.itemView.setOnClickListener {
+        val context = holder.itemView.context
+        val intent = Intent(context, MainActivity3::class.java)
+        intent.putExtra("id", list.id)  // passa o ID ou outro dado
+        context.startActivity(intent)
+    }
     if (list.valor < 0) {
         holder.valorItem.setTextColor(Color.RED) // Importa android.graphics.Color
     } else {

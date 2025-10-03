@@ -54,7 +54,7 @@ class ControleMolde(context: Context): SQLiteOpenHelper(context, "database.db", 
         if (c.moveToFirst()) {
             do {
                 val idIndex = c.getColumnIndex("id")
-                val valorIndex = c.getColumnIndex("id")
+                val valorIndex = c.getColumnIndex("valor")
                 val categoriaIndex = c.getColumnIndex("categoria")
                 val dateIndex = c.getColumnIndex("data")
 
