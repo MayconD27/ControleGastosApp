@@ -101,6 +101,33 @@ class ControleMolde(context: Context): SQLiteOpenHelper(context, "database.db", 
         return  res
 
     }
+    fun deleteItem(id: Int) : Int{
+
+        val db = this.writableDatabase
+        val res = db.delete("control", "id=?", arrayOf(id.toString()))
+        if(res > 0){
+            return res
+        }
+        else{
+            return 0
+        }
+
+    }
+    fun updateItem(id: Int, categoria: String, data: String, valor: Float): Int{
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("categoria", categoria)
+        contentValues.put("data", data)
+        contentValues.put("valor", valor)
+        val res = db.update("control",contentValues , "id=?", arrayOf(id.toString()))
+        if (res > 0){
+            return res
+        }
+        else{
+            return 0
+        }
+    }
+
     fun resetDatabase() {
         val db = this.writableDatabase
         db.execSQL("DROP TABLE IF EXISTS control")
