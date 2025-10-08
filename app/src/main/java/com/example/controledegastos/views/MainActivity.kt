@@ -3,7 +3,9 @@ package com.example.controledegastos.views
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -50,6 +52,37 @@ class MainActivity : AppCompatActivity() {
         binding.addItem.setOnClickListener {
             val i = Intent(this, MainActivity2::class.java)
             startActivity(i)
+        }
+        binding.cleanList.setOnClickListener {
+
+
+            AlertDialog.Builder(this)
+                .setTitle("Confirmação")
+                .setMessage("Tem certeza que deseja continuar?")
+                .setPositiveButton("Confirmar") { dialog, _ ->
+                    // Aqui é o "onConfirm"
+                    db.resetDatabase()
+                    adapter = ControleCustoAdapter(data)
+                    binding.recyclerView.adapter = adapter
+
+                    // Atualiza o valor total
+                    val valorTotal = db.sumItemsValue()
+                    if(valorTotal<0){
+                        binding.totalValue.setTextColor(Color.RED)
+                    }
+                    else{
+                        binding.totalValue.setTextColor(Color.parseColor("#333333"))
+                    }
+                    binding.totalValue.text = conversorMoeda(valorTotal)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("Cancelar") { dialog, _ ->
+                    // Cancelar
+                    Toast.makeText(this, "Cancelado!", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
         }
     }
     override fun onResume() {

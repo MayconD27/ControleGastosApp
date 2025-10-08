@@ -43,11 +43,11 @@ class ControleCustoAdapter(val listCusto: ArrayList<ItemCusto>) : RecyclerView.A
     holder.itemView.setOnClickListener {
         val context = holder.itemView.context
         val intent = Intent(context, MainActivity3::class.java)
-        intent.putExtra("id", list.id)  // passa o ID ou outro dado
+        intent.putExtra("id", list.id)
         context.startActivity(intent)
     }
     if (list.valor < 0) {
-        holder.valorItem.setTextColor(Color.RED) // Importa android.graphics.Color
+        holder.valorItem.setTextColor(Color.RED)
     } else {
         holder.valorItem.setTextColor(Color.parseColor("#333333")) // Ou a cor padrão que quiser
     }
